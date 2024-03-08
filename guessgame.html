@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guess Game</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div id="container">
+      <h1 id="game">Guess Game</h1>
+      <input id="valued" type="number" min="1" max="10" autofocus />
+      <button onclick="checkGuess()">Check</button>
+      <p id="result">I am telling Right/Wrong</p>
+      <p id="score">Score: 10</p>
+    </div>
+
+    <script>
+      var io = document.getElementById("valued");
+      var res = document.getElementById("result");
+      var count = 10;
+      var rando = Math.floor(Math.random() * 10) + 1;
+      var sco = document.getElementById("score");
+
+      function checkGuess() {
+        var num = parseInt(io.value);
+        if (num === rando) {
+          res.textContent = "Correct";
+          alert("You Won!");
+        } else {
+          count--;
+          res.textContent = "Wrong";
+          sco.textContent = "Score: " + count;
+          if (count === 0) {
+            alert("Game Over! The correct number was " + rando);
+            location.reload();
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
